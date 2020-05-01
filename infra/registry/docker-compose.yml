@@ -1,0 +1,16 @@
+# http://localhost:55000/v2/_catalog
+# hosts file update: 127.0.0.1 my-registry
+
+version: '3.1'
+
+services:
+    my-registry:
+        image: registry:2.6.1
+        volumes:
+            - registry:/var/lib/registry
+        ports:
+            - "55000:5000"
+        restart: unless-stopped # restart policy, so it will automatically start the service
+
+volumes:
+    registry:
